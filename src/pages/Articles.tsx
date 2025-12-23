@@ -17,14 +17,14 @@ const categories = [
 
 const articles = [
   {
-    id: 1,
-    title: "Understanding Your Medical Bill: A Complete Beginner's Guide",
-    excerpt: "Learn how to read and understand every section of your medical bill, from procedure codes to insurance adjustments.",
-    category: "basics",
-    readTime: "8 min read",
-    date: "Dec 15, 2024",
-    featured: true,
-  },
+  id: 1,
+  title: "Understanding Your Medical Bill: A Complete Beginner's Guide",
+  excerpt: "Medical bills can be confusing, but understanding them doesn’t have to be difficult. In this guide, we break down each section of a typical medical bill, explaining procedure codes, insurance adjustments, and common charges in plain language. By the end, you’ll feel confident reading your own medical statements and spotting potential errors or overcharges.",
+  category: "basics",
+  readTime: "8 min read",
+  date: "Dec 15, 2024",
+  featured: true,
+}
   {
     id: 2,
     title: "10 Common Medical Billing Errors and How to Spot Them",

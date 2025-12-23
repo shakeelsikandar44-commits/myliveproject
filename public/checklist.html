@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Printable Lab Results Checklist — Medical Bill Helps</title>
+    <style>
+      body{font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; margin:0; padding:24px; background:#f8fafc}
+      .card{max-width:700px;margin:24px auto;padding:24px;background:#fff;border-radius:12px;box-shadow:0 6px 20px rgba(2,6,23,.08)}
+      h1{font-size:20px;margin-bottom:6px}
+      p{color:#475569;margin-top:0}
+      .controls{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+      .btn{background:#0ea5a3;color:#fff;padding:10px 14px;border-radius:8px;text-decoration:none;display:inline-block}
+      @media print{body{background:#fff} .btn, .controls{display:none}}
+      img {width:100%;height:auto;border-radius:6px}
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <div class="controls">
+        <button class="btn" onclick="window.print()">Print checklist</button>
+        <a class="btn" href="images/lab-results-checklist.svg" download>Download SVG</a>
+      </div>
+      <h1>Lab Results Checklist</h1>
+      <p>Use this checklist at your follow-up appointment. Print or download as PDF (use your browser's print → Save as PDF).</p>
+      <img src="images/lab-results-checklist.svg" alt="Printable lab results checklist" />
+      <hr style="margin:18px 0;border:none;border-top:1px solid #e6eef6" />
+      <p style="font-size:13px;color:#64748b">Note: This checklist is informational. Discuss your results with your clinician.</p>
+    </div>
+  </body>
+</html>

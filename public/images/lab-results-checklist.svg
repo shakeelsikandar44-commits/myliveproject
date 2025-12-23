@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="595" height="842" viewBox="0 0 595 842" role="img" aria-labelledby="ctitle cdesc">
+  <title id="ctitle">Printable Lab Results Checklist</title>
+  <desc id="cdesc">A printable checklist to bring to appointments after receiving lab results.</desc>
+  <style>
+    .page { fill: #ffffff; }
+    .title { font: 700 22px/1.2 'Plus Jakarta Sans', Arial, sans-serif; fill: #0b1220 }
+    .item { font: 500 16px/1.3 'Plus Jakarta Sans', Arial, sans-serif; fill: #0b1220 }
+    .muted { font: 400 13px/1.2 'Plus Jakarta Sans', Arial, sans-serif; fill: #64748b }
+    .box { stroke: #0b1220; stroke-width: 1; fill: none; }
+  </style>
+
+  <rect x="0" y="0" width="595" height="842" class="page" />
+  <text x="40" y="64" class="title">Lab Results Checklist</text>
+  <text x="40" y="88" class="muted">Print this and bring it to your follow-up appointment</text>
+
+  <!-- list -->
+  <g transform="translate(40,120)">
+    <g transform="translate(0,0)">
+      <rect x="0" y="0" width="18" height="18" class="box" />
+      <text x="28" y="14" class="item">Bring all current lab reports (date & test names)</text>
+    </g>
+
+    <g transform="translate(0,36)">
+      <rect x="0" y="0" width="18" height="18" class="box" />
+      <text x="28" y="14" class="item">Bring a list of current medications and supplements</text>
+    </g>
+
+    <g transform="translate(0,72)">
+      <rect x="0" y="0" width="18" height="18" class="box" />
+      <text x="28" y="14" class="item">Highlight any H or L flags on the report</text>
+    </g>
+
+    <g transform="translate(0,108)">
+      <rect x="0" y="0" width="18" height="18" class="box" />
+      <text x="28" y="14" class="item">Note whether you fasted or had special instructions</text>
+    </g>
+
+    <g transform="translate(0,144)">
+      <rect x="0" y="0" width="18" height="18" class="box" />
+      <text x="28" y="14" class="item">Write down symptoms or changes since last visit</text>
+    </g>
+
+    <g transform="translate(0,180)">
+      <rect x="0" y="0" width="18" height="18" class="box" />
+      <text x="28" y="14" class="item">Ask: "What caused this result and should we repeat it?"</text>
+    </g>
+
+    <g transform="translate(0,216)">
+      <rect x="0" y="0" width="18" height="18" class="box" />
+      <text x="28" y="14" class="item">Agree next steps (monitor, lifestyle, meds, referral)</text>
+    </g>
+  </g>
+
+  <text x="40" y="760" class="muted">Note: This checklist is informational. Discuss your results with your clinician.</text>
+</svg>

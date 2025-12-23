@@ -8,6 +8,8 @@ import Index from "./pages/Index";
 import BillAnalyze from "./pages/BillAnalyze";
 import Decode from "./pages/Decode";
 import Articles from "./pages/Articles";
+import Article from "./pages/Article";
+import Privacy from "./pages/Privacy";
 import Terms from "./pages/Terms";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
@@ -26,6 +28,8 @@ const App = () => (
           <Route path="/bill-analyze" element={<BillAnalyze />} />
           <Route path="/decode" element={<Decode />} />
           <Route path="/articles" element={<Articles />} />
+          <Route path="/articles/:id" element={<Article />} />
+          <Route path="/privacy" element={<Privacy />} />
           <Route path="/terms" element={<Terms />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />

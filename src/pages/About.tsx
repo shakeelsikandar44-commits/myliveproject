@@ -45,7 +45,7 @@ const About = () => {
             className="text-center max-w-3xl mx-auto"
           >
             <span className="inline-block px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
-              About Us
+              About
             </span>
             <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
               Empowering Patients Through Knowledge

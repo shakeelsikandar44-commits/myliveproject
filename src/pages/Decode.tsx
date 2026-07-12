@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import Layout from "@/components/Layout";
 import decodeImage from "@/assets/decode-medical.jpg";
+import { useSEO } from "@/hooks/useSEO";
 
 interface DecodeResult {
   code: string;
@@ -27,6 +28,12 @@ const commonCodes = [
 ];
 
 const Decode = () => {
+  useSEO({
+    title: "Medical Code Decoder | CPT, ICD-10 & HCPCS Lookup",
+    description: "Instantly decode CPT, ICD-10, and HCPCS codes from your medical bill to understand exactly what procedures and charges mean.",
+    canonicalPath: "/decode",
+  });
+
   const [searchCode, setSearchCode] = useState("");
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState<DecodeResult | null>(null);
@@ -138,7 +145,7 @@ const Decode = () => {
         <div className="absolute inset-0">
           <img
             src={decodeImage}
-            alt="Medical codes"
+            alt="CPT and ICD-10 medical billing codes being decoded"
             className="w-full h-full object-cover opacity-20"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-background via-background/95 to-background" />

@@ -1,7 +1,14 @@
 import { motion } from "framer-motion";
 import Layout from "@/components/Layout";
+import { useSEO } from "@/hooks/useSEO";
 
 const Terms = () => {
+  useSEO({
+    title: "Terms of Service | Medical Bill Help",
+    description: "Review the terms of service for using Medical Bill Help's AI-powered medical bill analysis and code decoding tools.",
+    canonicalPath: "/terms",
+  });
+
   const sections = [
     {
       title: "1. Acceptance of Terms",

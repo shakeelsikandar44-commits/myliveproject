@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import Layout from "@/components/Layout";
 import HoverPreview from "@/components/HoverPreview";
+import { useSEO } from "@/hooks/useSEO";
 
 const categories = [
   { id: "all", label: "All Articles" },
@@ -229,6 +230,12 @@ const previews: Record<number, string> = {
 };
 
 const Articles = () => {
+  useSEO({
+    title: "Medical Billing Articles & Guides | Medical Bill Help",
+    description: "Read guides on medical billing practices, patient rights, insurance claims, and how to spot and dispute incorrect charges on your medical bill.",
+    canonicalPath: "/articles",
+  });
+
   const [activeCategory, setActiveCategory] = useState("all");
   const [searchQuery, setSearchQuery] = useState("");
 

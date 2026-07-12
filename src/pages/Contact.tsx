@@ -6,8 +6,15 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import Layout from "@/components/Layout";
 import { toast } from "sonner";
+import { useSEO } from "@/hooks/useSEO";
 
 const Contact = () => {
+  useSEO({
+    title: "Contact Us | Medical Bill Help",
+    description: "Have a question about a medical bill or need help getting started? Reach out to the Medical Bill Help team here.",
+    canonicalPath: "/contact",
+  });
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",

@@ -9,7 +9,7 @@ const articles: Record<string, any> = {
     date: "Dec 15, 2024",
     readTime: "9 min read",
     author: {
-      name: "Myliveproject Medical Editorial Team",
+      name: "Medical Bill Help Medical Editorial Team",
       bio: "U.S.-based medical writers; content reviewed against peer-reviewed literature and clinical guidelines.",
     },
     metaDescription: "A step-by-step guide to help you read and understand every section of your medical bill, identify common charges, and take action to correct errors.",
@@ -46,7 +46,7 @@ const articles: Record<string, any> = {
     date: "Dec 12, 2024",
     readTime: "8 min read",
     author: {
-      name: "Myliveproject Medical Editorial Team",
+      name: "Medical Bill Help Medical Editorial Team",
     },
     metaDescription: "Learn the ten most frequent medical billing errors—duplicate charges, wrong provider, miscoding—and how to spot and fix them.",
     html: `
@@ -92,7 +92,7 @@ const articles: Record<string, any> = {
     title: "Your Rights When Disputing a Medical Bill",
     date: "Dec 10, 2024",
     readTime: "7 min read",
-    author: { name: "Myliveproject Health Editorial Lead" },
+    author: { name: "Medical Bill Help Health Editorial Lead" },
     metaDescription: "Know your rights when challenging a medical bill, how to file disputes, and protections like surprise billing rules and state consumer laws.",
     html: `
       <p>You have rights when disputing medical bills. Understanding the process and legal protections can help you successfully resolve disputes and minimize financial harm.</p>
@@ -147,7 +147,7 @@ const articles: Record<string, any> = {
     title: "Understanding Your Explanation of Benefits (EOB)",
     date: "Dec 5, 2024",
     readTime: "7 min read",
-    author: { name: "Myliveproject Medical Editorial Team" },
+    author: { name: "Medical Bill Help Medical Editorial Team" },
     metaDescription: "An easy guide to reading your insurer's Explanation of Benefits, what each section means, and how to verify payments and patient responsibility.",
     html: `
       <p>An Explanation of Benefits (EOB) is a statement from your insurer—not a bill—that shows how your claim was processed. It explains the submitted charge, what the insurer paid, and what you may owe.</p>
@@ -168,7 +168,7 @@ const articles: Record<string, any> = {
     title: "CPT Codes Explained: What You Need to Know",
     date: "Dec 3, 2024",
     readTime: "7 min read",
-    author: { name: "Myliveproject Health Editorial Lead" },
+    author: { name: "Medical Bill Help Health Editorial Lead" },
     metaDescription: "A practical explanation of CPT codes, how they determine billing, and how to check them for accuracy.",
     html: `
       <p>CPT (Current Procedural Terminology) codes describe medical services and procedures. They are central to billing because they determine how providers are reimbursed.</p>
@@ -186,7 +186,7 @@ const articles: Record<string, any> = {
     title: "How to Request an Itemized Medical Bill",
     date: "Dec 1, 2024",
     readTime: "5 min read",
-    author: { name: "Myliveproject Medical Editorial Team" },
+    author: { name: "Medical Bill Help Medical Editorial Team" },
     metaDescription: "Step-by-step instructions for requesting an itemized bill, including templates and timelines to expect from providers.",
     html: `
       <p>Itemized bills give you the breakdown of every charge. They are essential when checking for errors and preparing disputes.</p>
@@ -204,7 +204,7 @@ const articles: Record<string, any> = {
     title: "Balance Billing: What It Is and How to Protect Yourself",
     date: "Nov 28, 2024",
     readTime: "8 min read",
-    author: { name: "Myliveproject Medical Editorial Team" },
+    author: { name: "Medical Bill Help Medical Editorial Team" },
     metaDescription: "Understand balance billing, federal protections against surprise bills, and steps to dispute out-of-network charges.",
     html: `
       <p>Balance billing occurs when a provider bills you for the difference between their charge and what the insurer paid. Surprise billing, especially after emergency or out-of-network care, has received regulatory attention and protections.</p>
@@ -222,7 +222,7 @@ const articles: Record<string, any> = {
     title: "Financial Assistance Programs: A Complete Guide",
     date: "Nov 25, 2024",
     readTime: "9 min read",
-    author: { name: "Myliveproject Medical Editorial Team" },
+    author: { name: "Medical Bill Help Medical Editorial Team" },
     metaDescription: "Discover hospital charity care, payment plans, and other options for managing medical debt and accessing financial assistance.",
     html: `
       <p>Many hospitals and health systems offer financial assistance programs for patients who cannot afford their bills. Understanding eligibility and how to apply can significantly reduce patient liability.</p>
@@ -241,7 +241,7 @@ const articles: Record<string, any> = {
     date: "Dec 23, 2025",
     readTime: "12 min read",
     author: {
-      name: "Myliveproject Medical Editorial Team",
+      name: "Medical Bill Help Medical Editorial Team",
       bio: "U.S.-based medical writers; content reviewed against peer-reviewed literature and clinical guidelines.",
     },
     metaDescription:
@@ -278,7 +278,7 @@ const articles: Record<string, any> = {
     title: "Common Lab Tests Explained: CBC, CMP, Lipids, A1C",
     date: "Dec 23, 2025",
     readTime: "9 min read",
-    author: { name: "Myliveproject Medical Editorial Team" },
+    author: { name: "Medical Bill Help Medical Editorial Team" },
     metaDescription: "A comprehensive reference explaining the most commonly ordered lab tests, what each measures, and when to seek follow-up.",
     html: `
       <p>This reference explains common lab tests you’re likely to encounter and what they typically mean. Use it to interpret results and prepare informed questions for your clinician.</p>
@@ -305,7 +305,7 @@ const articles: Record<string, any> = {
     title: "7 Practical Steps to Use Your Lab Results to Improve Health",
     date: "Dec 23, 2025",
     readTime: "8 min read",
-    author: { name: "Myliveproject Medical Editorial Team" },
+    author: { name: "Medical Bill Help Medical Editorial Team" },
     metaDescription: "Actionable steps to take after getting lab results so you can use them to guide healthier choices and better medical care.",
     html: `
       <p>Lab results are most useful when they lead to clear actions. These seven steps help you turn data into better health decisions.</p>
@@ -347,12 +347,12 @@ const Article = () => {
   const authorVariants: Record<string, any> = {
     A: {
       "@type": "Organization",
-      name: "Myliveproject Medical Editorial Team",
+      name: "Medical Bill Help Medical Editorial Team",
       sameAs: "https://example.com/about",
     },
     B: {
       "@type": "Person",
-      name: "Myliveproject Health Editorial Lead",
+      name: "Medical Bill Help Health Editorial Lead",
       sameAs: "https://example.com/about",
     },
     C: {
@@ -364,7 +364,7 @@ const Article = () => {
 
   useEffect(() => {
     if (article) {
-      document.title = `${article.title} | Myliveproject`;
+      document.title = `${article.title} | Medical Bill Help`;
 
       // Set meta description
       let meta = document.querySelector('meta[name="description"]');
@@ -385,7 +385,7 @@ const Article = () => {
         author: authorVariants[authorVariant] || authorVariants.A,
         publisher: {
           "@type": "Organization",
-          name: "Myliveproject",
+          name: "Medical Bill Help",
         },
       };
 
@@ -421,7 +421,7 @@ const Article = () => {
         <div className="mb-6 text-sm text-muted-foreground">{article.date} • {article.readTime}</div>
         <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-4">{article.title}</h1>
         <div className="mb-8 text-sm text-muted-foreground">
-          <strong>{article.author?.name ?? 'Myliveproject Medical Editorial Team'}</strong>
+          <strong>{article.author?.name ?? 'Medical Bill Help Medical Editorial Team'}</strong>
           {article.author?.bio ? ` — ${article.author.bio}` : null}
         </div>
 

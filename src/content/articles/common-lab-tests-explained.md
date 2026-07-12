@@ -1,7 +1,7 @@
 ---
 title: "Common Lab Tests Explained: CBC, CMP, Lipids, A1C"
 date: "2025-12-23"
-author: "Myliveproject Medical Editorial Team"
+author: "Medical Bill Help Medical Editorial Team"
 metaDescription: "Quick reference explaining common lab tests and typical ranges to help you understand your results."
 slug: "common-lab-tests-explained"
 ---

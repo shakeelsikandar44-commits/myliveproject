@@ -7,6 +7,7 @@ import {
 import { Button } from "@/components/ui/button";
 import Layout from "@/components/Layout";
 import billAnalysisImage from "@/assets/bill-analysis.jpg";
+import { useSEO } from "@/hooks/useSEO";
 
 interface AnalysisResult {
   summary: string;
@@ -22,6 +23,12 @@ interface AnalysisResult {
 }
 
 const BillAnalyze = () => {
+  useSEO({
+    title: "Analyze Your Medical Bill Free | AI Bill Breakdown",
+    description: "Upload your medical bill (PDF, Word, or image) and get an instant AI-powered breakdown of every charge, plus potential errors and savings opportunities.",
+    canonicalPath: "/bill-analyze",
+  });
+
   const [dragActive, setDragActive] = useState(false);
   const [file, setFile] = useState<File | null>(null);
   const [analyzing, setAnalyzing] = useState(false);
@@ -377,7 +384,7 @@ const BillAnalyze = () => {
             <div>
               <img
                 src={billAnalysisImage}
-                alt="Bill analysis process"
+                alt="AI analyzing a medical bill and breaking down charges"
                 className="rounded-2xl shadow-lg"
               />
             </div>

@@ -1,7 +1,14 @@
 import { motion } from "framer-motion";
 import Layout from "@/components/Layout";
+import { useSEO } from "@/hooks/useSEO";
 
 const Privacy = () => {
+  useSEO({
+    title: "Privacy Policy | Medical Bill Help",
+    description: "Read our privacy policy to understand how Medical Bill Help collects, uses, and protects your personal and medical billing information.",
+    canonicalPath: "/privacy",
+  });
+
   return (
     <Layout>
       {/* Hero Section */}

@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button";
 import Layout from "@/components/Layout";
 import heroImage from "@/assets/hero-medical.jpg";
 import billAnalysisImage from "@/assets/bill-analysis.jpg";
+import { useSEO } from "@/hooks/useSEO";
 
 const heroSlides = [
   {
@@ -96,6 +97,12 @@ const testimonials = [
 ];
 
 const Index = () => {
+  useSEO({
+    title: "Medical Bill Help | AI Bill Analysis & Code Decoder",
+    description: "Upload your medical bill for a free AI-powered breakdown. Spot billing errors, decode CPT and ICD-10 codes instantly, and learn your rights as a patient.",
+    canonicalPath: "/",
+  });
+
   const [currentSlide, setCurrentSlide] = useState(0);
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
 
@@ -117,7 +124,7 @@ const Index = () => {
         <div className="absolute inset-0">
           <img
             src={heroImage}
-            alt="Medical professionals"
+            alt="Medical professionals reviewing a patient's healthcare costs"
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-foreground/90 via-foreground/70 to-foreground/40" />
@@ -309,7 +316,7 @@ const Index = () => {
             >
               <img
                 src={billAnalysisImage}
-                alt="Bill analysis"
+                alt="AI-powered medical bill analysis report with itemized charges"
                 className="rounded-2xl shadow-lg"
               />
               <div className="absolute -bottom-8 -left-8 p-6 rounded-2xl glass shadow-lg">

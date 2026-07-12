@@ -1,7 +1,7 @@
 ---
 title: "7 Practical Steps to Use Your Lab Results to Improve Health"
 date: "2025-12-23"
-author: "Myliveproject Medical Editorial Team"
+author: "Medical Bill Help Medical Editorial Team"
 metaDescription: "Actionable steps to take after getting your lab results to improve outcomes and track progress."
 slug: "7-practical-steps-use-lab-results"
 ---

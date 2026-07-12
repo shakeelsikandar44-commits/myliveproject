@@ -1,8 +1,15 @@
 import { motion } from "framer-motion";
 import { Target, Heart, Users, Award, CheckCircle } from "lucide-react";
 import Layout from "@/components/Layout";
+import { useSEO } from "@/hooks/useSEO";
 
 const About = () => {
+  useSEO({
+    title: "About Us | Medical Bill Help",
+    description: "Learn how Medical Bill Help uses AI to help patients understand their medical bills, spot billing errors, and advocate for fair healthcare pricing.",
+    canonicalPath: "/about",
+  });
+
   const values = [
     {
       icon: Target,

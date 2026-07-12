@@ -1,7 +1,7 @@
 ---
 title: "How to Read Your Lab & Health Test Results — A Doctor’s Plain‑English Guide"
 date: "2025-12-23"
-author: "Myliveproject Medical Editorial Team"
+author: "Medical Bill Help Medical Editorial Team"
 metaDescription: "Learn how to read common lab tests (CBC, CMP, lipids, A1C), what normal ranges mean, when to call a doctor, and practical next steps—doctor‑reviewed."
 slug: "how-to-read-lab-results"
 ---

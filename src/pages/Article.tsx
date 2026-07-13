@@ -333,7 +333,97 @@ const articles: Record<string, any> = {
 
       <p>With a clear plan, lab results can be a powerful tool for prevention and treatment—use them to guide informed, measurable health goals.</p>
     `,
-  }
+  },
+
+  "13": {
+    id: 13,
+    title: "The No Surprises Act: Your Protection Against Surprise Medical Bills",
+    date: "Jul 14, 2026",
+    readTime: "9 min read",
+    author: { name: "Medical Bill Help Medical Editorial Team" },
+    metaDescription:
+      "Learn how the No Surprises Act protects you from unexpected out-of-network bills for emergency care, and what to do if you're billed anyway.",
+    html: `
+      <p>A "surprise" medical bill happens when you receive care from an out-of-network provider without realizing it—often during an emergency or at an in-network facility where an individual clinician happens to be out-of-network. Since 2022, a federal law called the No Surprises Act has limited how much you can be charged in many of these situations.</p>
+
+      <h2>What the law covers</h2>
+      <p>The No Surprises Act generally protects you when you receive emergency care at any hospital or emergency room, regardless of network status, and when you receive non-emergency care from an out-of-network provider at an in-network facility (for example, an anesthesiologist or radiologist you didn't choose). In both cases, you should only owe your normal in-network cost-sharing amount—not the higher out-of-network rate.</p>
+
+      <h2>What the law does not cover</h2>
+      <p>Ground ambulance rides are largely excluded from the law's protections, so surprise bills for ambulance transport remain more common. The law also doesn't apply if you knowingly and voluntarily choose an out-of-network provider and sign a written consent form agreeing to pay out-of-network rates ahead of time—always read these forms carefully before signing.</p>
+
+      <h2>What to do if you get a surprise bill</h2>
+      <p>First, check whether the bill falls into one of the protected categories above. If it does, contact the provider's billing department, cite the No Surprises Act, and ask them to rebill at the in-network rate. If they don't correct it, you can file a complaint with the No Surprises Help Desk, which investigates violations and can require the provider to adjust the bill.</p>
+
+      <h2>The independent dispute resolution process</h2>
+      <p>Behind the scenes, when a provider and insurer disagree about payment for a protected claim, they can use an independent dispute resolution process to settle the amount between themselves. Importantly, this process happens without involving you financially—you're not required to pay the difference while it's being resolved.</p>
+
+      <h2>Good faith estimates for uninsured and self-pay patients</h2>
+      <p>If you don't have insurance or don't plan to use it, providers are required to give you a written good faith estimate of expected charges before a scheduled service. If your final bill comes in $400 or more above that estimate, you have the right to dispute the difference.</p>
+
+      <p>Knowing these protections turns a confusing bill into a solvable problem—cite the law by name when you call, and keep records of every conversation in case you need to escalate.</p>
+    `,
+  },
+
+  "14": {
+    id: 14,
+    title: "ICD-10 Codes Explained: What They Mean and Why They Matter",
+    date: "Jul 14, 2026",
+    readTime: "7 min read",
+    author: { name: "Medical Bill Help Medical Editorial Team" },
+    metaDescription:
+      "A plain-English guide to ICD-10 diagnosis codes on your medical bill: how they're structured, why they matter for coverage, and how to check them for errors.",
+    html: `
+      <p>If CPT codes describe what was done to you, ICD-10 codes describe why. These diagnosis codes appear on nearly every medical bill and insurance claim, and they play a direct role in whether a service gets covered.</p>
+
+      <h2>What ICD-10 stands for</h2>
+      <p>ICD-10 is short for the 10th revision of the International Classification of Diseases, a coding system used to record diagnoses, symptoms, and reasons for a visit. In the U.S., a clinical modification (ICD-10-CM) is used specifically for billing and health records.</p>
+
+      <h2>How the codes are structured</h2>
+      <p>A typical ICD-10 code starts with a letter followed by numbers, such as E11.9 for type 2 diabetes without complications. The letter and first two digits usually identify a broad category, while the digits after the decimal point add detail—things like which side of the body is affected, or whether a condition is chronic or acute.</p>
+
+      <h2>Why the diagnosis code affects your bill</h2>
+      <p>Insurers use the diagnosis code together with the procedure (CPT) code to decide whether a service was "medically necessary" for that condition. A mismatched or vague diagnosis code is one of the most common reasons a claim gets denied or a service isn't covered—even when the treatment itself was appropriate.</p>
+
+      <h2>Common billing problems tied to ICD-10 codes</h2>
+      <p>Watch for a diagnosis code that doesn't match your actual condition, a code left over from a previous visit, or a code that's too general to justify the specific test or treatment billed. These mismatches are usually clerical, not fraudulent, but they can still leave you owing money you shouldn't.</p>
+
+      <h2>How to check your codes</h2>
+      <p>Your itemized bill or Explanation of Benefits should list the diagnosis codes used for each service. You can look up what a code means using a free public ICD-10 lookup tool, then compare it to the reason you actually sought care. If something doesn't match, that's a good starting point for a billing dispute.</p>
+
+      <p>Diagnosis codes are easy to overlook, but they're often the real reason a claim was approved, denied, or billed at a certain rate—understanding them puts you in a much stronger position to catch errors early.</p>
+    `,
+  },
+
+  "15": {
+    id: 15,
+    title: "How Medical Debt Affects Your Credit Score (2025 Rules Explained)",
+    date: "Jul 14, 2026",
+    readTime: "8 min read",
+    author: { name: "Medical Bill Help Medical Editorial Team" },
+    metaDescription:
+      "Understand how medical debt is treated on your credit report today, what recently changed, and practical steps to protect your credit score.",
+    html: `
+      <p>Medical debt is treated differently from other kinds of debt on your credit report, and the rules around it have shifted in recent years. Here's what you need to know if you're carrying a medical bill you can't pay off right away.</p>
+
+      <h2>How medical debt used to affect credit reports</h2>
+      <p>For years, unpaid medical bills that went to collections could show up on your credit report much like any other collection account, often dragging down your score for a condition or emergency that had little to do with your overall financial responsibility.</p>
+
+      <h2>What has changed</h2>
+      <p>The three major credit bureaus voluntarily stopped reporting most paid medical collection debt, removed medical collections under a certain dollar threshold, and extended the waiting period before unpaid medical debt appears on a report at all. Separately, regulators have pursued rules to remove medical debt from credit reports more broadly, though the exact scope has been subject to legal challenges—so protections can vary and are worth checking on if this affects you directly.</p>
+
+      <h2>What this means practically</h2>
+      <p>If you pay off a medical collection, it should no longer weigh on your credit score the way it once did. Small medical debts below the reporting threshold generally shouldn't appear on your report at all. Larger, older unpaid balances may still show up, so it's still worth resolving them rather than assuming they'll disappear.</p>
+
+      <h2>Steps to protect your credit while dealing with medical debt</h2>
+      <p>Don't ignore the bill—reach out to the provider's billing office to ask about a payment plan or financial assistance program before it's sent to collections. If a bill does go to collections, request written validation of the debt, and check your credit report regularly to confirm collections are removed once paid, since bureaus don't always update instantly.</p>
+
+      <h2>If you believe a medical debt was reported in error</h2>
+      <p>You have the right to dispute inaccurate information directly with the credit bureau. Include documentation such as the paid receipt, insurance EOB, or evidence the debt should have fallen under the removed thresholds.</p>
+
+      <p>Medical debt rules have moved in your favor recently, but they're not automatic—paying attention to your credit report and following up on disputes is still the best way to make sure the current protections actually apply to you.</p>
+    `,
+  },
 };
 
 const Article = () => {

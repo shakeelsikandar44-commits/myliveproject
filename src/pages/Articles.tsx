@@ -126,6 +126,33 @@ const articles = [
     date: "Nov 25, 2024",
     featured: false,
   },
+  {
+    id: 13,
+    title: "The No Surprises Act: Your Protection Against Surprise Medical Bills",
+    excerpt: "Learn how federal law limits out-of-network charges for emergency care and what to do if you're billed anyway.",
+    category: "rights",
+    readTime: "9 min read",
+    date: "Jul 14, 2026",
+    featured: true,
+  },
+  {
+    id: 14,
+    title: "ICD-10 Codes Explained: What They Mean and Why They Matter",
+    excerpt: "A plain-English guide to the diagnosis codes on your bill and why they can determine whether a service is covered.",
+    category: "basics",
+    readTime: "7 min read",
+    date: "Jul 14, 2026",
+    featured: false,
+  },
+  {
+    id: 15,
+    title: "How Medical Debt Affects Your Credit Score (2025 Rules Explained)",
+    excerpt: "What recently changed in how medical debt is reported to credit bureaus, and how to protect your score.",
+    category: "savings",
+    readTime: "8 min read",
+    date: "Jul 14, 2026",
+    featured: false,
+  },
 ];
 
 const previews: Record<number, string> = {

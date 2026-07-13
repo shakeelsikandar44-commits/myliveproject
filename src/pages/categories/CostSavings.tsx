@@ -1,6 +1,14 @@
 import Layout from "@/components/Layout";
+import { useSEO } from "@/hooks/useSEO";
 
 const CostSavings = () => {
+  useSEO({
+    title: "Cost Savings: Smart Ways to Lower Your Medical Expenses | Medical Bill Help",
+    description:
+      "Discover smart, actionable ways to lower your medical expenses, negotiate bills, and find financial assistance programs.",
+    canonicalPath: "/categories/cost-savings",
+  });
+
   return (
     <Layout>
       <section className="pt-32 pb-16">

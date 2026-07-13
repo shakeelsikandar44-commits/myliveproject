@@ -352,6 +352,18 @@ const Articles = () => {
               </button>
             ))}
           </div>
+          <div className="flex flex-wrap items-center gap-x-2 gap-y-1 mt-3 text-sm text-muted-foreground">
+            <span>Or read the complete guide:</span>
+            <Link to="/categories/basics" className="text-primary hover:underline">Basics</Link>
+            <span>·</span>
+            <Link to="/categories/billing-tips" className="text-primary hover:underline">Billing Tips</Link>
+            <span>·</span>
+            <Link to="/categories/insurance" className="text-primary hover:underline">Insurance</Link>
+            <span>·</span>
+            <Link to="/categories/patient-rights" className="text-primary hover:underline">Patient Rights</Link>
+            <span>·</span>
+            <Link to="/categories/cost-savings" className="text-primary hover:underline">Cost Savings</Link>
+          </div>
         </div>
       </section>
 

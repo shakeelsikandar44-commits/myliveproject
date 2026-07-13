@@ -16,6 +16,11 @@ const Terms = lazy(() => import("./pages/Terms"));
 const About = lazy(() => import("./pages/About"));
 const Contact = lazy(() => import("./pages/Contact"));
 const NotFound = lazy(() => import("./pages/NotFound"));
+const Basics = lazy(() => import("./pages/categories/Basics"));
+const BillingTips = lazy(() => import("./pages/categories/BillingTips"));
+const CostSavings = lazy(() => import("./pages/categories/CostSavings"));
+const Insurance = lazy(() => import("./pages/categories/Insurance"));
+const PatientRights = lazy(() => import("./pages/categories/PatientRights"));
 
 const queryClient = new QueryClient();
 
@@ -37,6 +42,11 @@ const App = () => (
             <Route path="/terms" element={<Terms />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/categories/basics" element={<Basics />} />
+            <Route path="/categories/billing-tips" element={<BillingTips />} />
+            <Route path="/categories/cost-savings" element={<CostSavings />} />
+            <Route path="/categories/insurance" element={<Insurance />} />
+            <Route path="/categories/patient-rights" element={<PatientRights />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>

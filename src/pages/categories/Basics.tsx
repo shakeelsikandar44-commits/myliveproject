@@ -1,6 +1,14 @@
 import Layout from "@/components/Layout";
+import { useSEO } from "@/hooks/useSEO";
 
 const Basics = () => {
+  useSEO({
+    title: "Medical Billing Basics: How to Read Your Bill & Reports | Medical Bill Help",
+    description:
+      "Learn the foundations of medical billing: how to read a bill and EOB, what CPT/ICD-10 codes mean, and practical steps to spot errors and lower your costs.",
+    canonicalPath: "/categories/basics",
+  });
+
   return (
     <Layout>
       <section className="pt-32 pb-16">

@@ -15,12 +15,19 @@ const Footer = () => {
       { label: "Contact", path: "/contact" },
       { label: "Terms of Service", path: "/terms" },
     ],
+    guides: [
+      { label: "Basics", path: "/categories/basics" },
+      { label: "Billing Tips", path: "/categories/billing-tips" },
+      { label: "Insurance", path: "/categories/insurance" },
+      { label: "Patient Rights", path: "/categories/patient-rights" },
+      { label: "Cost Savings", path: "/categories/cost-savings" },
+    ],
   };
 
   return (
     <footer className="bg-foreground text-background">
       <div className="container mx-auto px-4 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
           {/* Brand */}
           <div className="space-y-6">
             <Link to="/" className="flex items-center gap-2">
@@ -39,6 +46,23 @@ const Footer = () => {
             <h3 className="text-lg font-semibold mb-6">Services</h3>
             <ul className="space-y-4">
               {footerLinks.services.map((link) => (
+                <li key={link.path}>
+                  <Link
+                    to={link.path}
+                    className="text-background/70 hover:text-primary transition-colors"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Guides */}
+          <div>
+            <h3 className="text-lg font-semibold mb-6">Guides</h3>
+            <ul className="space-y-4">
+              {footerLinks.guides.map((link) => (
                 <li key={link.path}>
                   <Link
                     to={link.path}

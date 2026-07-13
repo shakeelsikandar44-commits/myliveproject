@@ -340,31 +340,19 @@ const Article = () => {
   const { id } = useParams();
   const article = id ? articles[id] : undefined;
 
-  // Allow choosing author variant via query param: ?author=A|B|C
-  const search = new URLSearchParams(window.location.search);
-  const authorVariant = (search.get("author") || "A").toUpperCase();
-
-  const authorVariants: Record<string, any> = {
-    A: {
-      "@type": "Organization",
-      name: "Medical Bill Help Medical Editorial Team",
-      sameAs: "https://example.com/about",
-    },
-    B: {
-      "@type": "Person",
-      name: "Medical Bill Help Health Editorial Lead",
-      sameAs: "https://example.com/about",
-    },
-    C: {
-      "@type": "Person",
-      name: "Jordan Reynolds, Senior Health Writer",
-      sameAs: "https://example.com/author/jordan-reynolds",
-    },
+  // Single, real editorial author/publisher used for every article (no fake A/B/C test personas).
+  const articleAuthor = {
+    "@type": "Organization",
+    name: "Medical Bill Help Editorial Team",
+    sameAs: "https://medicalbillhelps.com/about",
   };
 
   useEffect(() => {
     if (article) {
-      document.title = `${article.title} | Medical Bill Help`;
+      const pageTitle = `${article.title} | Medical Bill Help`;
+      const canonicalUrl = `https://medicalbillhelps.com/articles/${id}`;
+
+      document.title = pageTitle;
 
       // Set meta description
       let meta = document.querySelector('meta[name="description"]');
@@ -375,6 +363,34 @@ const Article = () => {
       }
       meta.setAttribute("content", article.metaDescription);
 
+      // Keep Open Graph / Twitter preview tags in sync so shared links show the
+      // article's own title/description instead of the homepage's.
+      const setMetaProperty = (attr: "property" | "name", key: string, content: string) => {
+        let tag = document.querySelector(`meta[${attr}="${key}"]`);
+        if (!tag) {
+          tag = document.createElement("meta");
+          tag.setAttribute(attr, key);
+          document.head.appendChild(tag);
+        }
+        tag.setAttribute("content", content);
+      };
+
+      setMetaProperty("property", "og:title", pageTitle);
+      setMetaProperty("property", "og:description", article.metaDescription);
+      setMetaProperty("property", "og:url", canonicalUrl);
+      setMetaProperty("property", "og:type", "article");
+      setMetaProperty("name", "twitter:title", pageTitle);
+      setMetaProperty("name", "twitter:description", article.metaDescription);
+
+      // Keep canonical link in sync with the current article
+      let canonical = document.querySelector('link[rel="canonical"]');
+      if (!canonical) {
+        canonical = document.createElement("link");
+        canonical.setAttribute("rel", "canonical");
+        document.head.appendChild(canonical);
+      }
+      canonical.setAttribute("href", canonicalUrl);
+
       // Inject JSON-LD for Article schema (basic)
       const ld = {
         "@context": "https://schema.org",
@@ -382,7 +398,7 @@ const Article = () => {
         headline: article.title,
         description: article.metaDescription,
         datePublished: article.date,
-        author: authorVariants[authorVariant] || authorVariants.A,
+        author: articleAuthor,
         publisher: {
           "@type": "Organization",
           name: "Medical Bill Help",
@@ -401,7 +417,7 @@ const Article = () => {
     }
 
     // Cleanup on unmount: optional — leave meta and title as-is
-  }, [article, authorVariant]);
+  }, [article, id]);
 
   if (!article) {
     return (

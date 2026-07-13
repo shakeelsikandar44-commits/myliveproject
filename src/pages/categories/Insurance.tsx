@@ -1,6 +1,14 @@
 import Layout from "@/components/Layout";
+import { useSEO } from "@/hooks/useSEO";
 
 const Insurance = () => {
+  useSEO({
+    title: "Health Insurance Guide: Choose, Use & Maximize Your Coverage | Medical Bill Help",
+    description:
+      "A plain-English guide to choosing health insurance, understanding your coverage, and maximizing your benefits to lower out-of-pocket costs.",
+    canonicalPath: "/categories/insurance",
+  });
+
   return (
     <Layout>
       <section className="pt-32 pb-16">

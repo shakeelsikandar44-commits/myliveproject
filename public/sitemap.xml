@@ -35,6 +35,28 @@
     <priority>0.6</priority>
   </url>
 
+  <!-- Guides / Categories -->
+  <url>
+    <loc>https://medicalbillhelps.com/categories/basics</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://medicalbillhelps.com/categories/billing-tips</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://medicalbillhelps.com/categories/insurance</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://medicalbillhelps.com/categories/patient-rights</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://medicalbillhelps.com/categories/cost-savings</loc>
+    <priority>0.8</priority>
+  </url>
+
   <!-- Articles -->
   <url>
     <loc>https://medicalbillhelps.com/articles/1</loc>
@@ -70,6 +92,18 @@
   </url>
   <url>
     <loc>https://medicalbillhelps.com/articles/9</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://medicalbillhelps.com/articles/10</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://medicalbillhelps.com/articles/11</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://medicalbillhelps.com/articles/12</loc>
     <priority>0.7</priority>
   </url>
 

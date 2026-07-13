@@ -1,6 +1,14 @@
 import Layout from "@/components/Layout";
+import { useSEO } from "@/hooks/useSEO";
 
 const BillingTips = () => {
+  useSEO({
+    title: "Medical Billing Tips: Save Money & Avoid Common Pitfalls | Medical Bill Help",
+    description:
+      "Practical medical billing tips to help you avoid common pitfalls, catch overcharges, and save money on your healthcare bills.",
+    canonicalPath: "/categories/billing-tips",
+  });
+
   return (
     <Layout>
       <section className="pt-32 pb-16">

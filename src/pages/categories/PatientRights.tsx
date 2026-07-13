@@ -1,6 +1,14 @@
 import Layout from "@/components/Layout";
+import { useSEO } from "@/hooks/useSEO";
 
 const PatientRights = () => {
+  useSEO({
+    title: "Patient Rights: Know Your Choices & Protections | Medical Bill Help",
+    description:
+      "Know your rights as a patient when disputing a medical bill, requesting an itemized statement, and protecting yourself from balance billing.",
+    canonicalPath: "/categories/patient-rights",
+  });
+
   return (
     <Layout>
       <section className="pt-32 pb-16">

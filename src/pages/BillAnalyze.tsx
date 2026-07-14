@@ -76,36 +76,47 @@ const BillAnalyze = () => {
     return FileType;
   };
 
+  const fileToBase64 = (file: File): Promise<string> => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => {
+        const result = reader.result as string;
+        resolve(result.split(",")[1]); // strip "data:mime/type;base64," prefix
+      };
+      reader.onerror = reject;
+      reader.readAsDataURL(file);
+    });
+  };
+
   const analyzeFile = async () => {
     if (!file) return;
 
     setAnalyzing(true);
-    
-    // Simulate AI analysis
-    await new Promise((resolve) => setTimeout(resolve, 3000));
 
-    const mockResult: AnalysisResult = {
-      summary: "This medical bill from General Hospital includes charges for an emergency room visit on 12/15/2024. The bill contains standard ER visit charges, lab work, and imaging services.",
-      totalAmount: "$4,287.50",
-      lineItems: [
-        { code: "99285", description: "Emergency Room Visit - Level 5", amount: "$1,850.00", status: "verified" },
-        { code: "36415", description: "Blood Draw/Venipuncture", amount: "$45.00", status: "verified" },
-        { code: "80053", description: "Comprehensive Metabolic Panel", amount: "$187.50", status: "verified" },
-        { code: "71046", description: "Chest X-Ray, 2 Views", amount: "$425.00", status: "potential-error" },
-        { code: "85025", description: "Complete Blood Count (CBC)", amount: "$95.00", status: "verified" },
-        { code: "99999", description: "Facility Fee - ER", amount: "$1,685.00", status: "review" },
-      ],
-      recommendations: [
-        "The chest X-ray charge (CPT 71046) appears higher than average. Consider requesting an itemized breakdown.",
-        "Verify if the facility fee includes any duplicate charges.",
-        "Check if your insurance has processed this bill correctly - you may be eligible for in-network rates.",
-        "Consider negotiating a payment plan if the out-of-pocket amount is burdensome.",
-      ],
-      potentialSavings: "$320 - $580",
-    };
+    try {
+      const base64Data = await fileToBase64(file);
 
-    setResult(mockResult);
-    setAnalyzing(false);
+      const response = await fetch("/api/analyze", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          fileData: base64Data,
+          mimeType: file.type,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Analysis request failed");
+      }
+
+      const analysisResult: AnalysisResult = await response.json();
+      setResult(analysisResult);
+    } catch (error) {
+      console.error("Bill analysis error:", error);
+      // TODO: surface a user-facing error toast here instead of failing silently
+    } finally {
+      setAnalyzing(false);
+    }
   };
 
   const clearFile = () => {

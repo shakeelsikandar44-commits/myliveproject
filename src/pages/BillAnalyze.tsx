@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import Layout from "@/components/Layout";
 import billAnalysisImage from "@/assets/bill-analysis.jpg";
 import { useSEO } from "@/hooks/useSEO";
+import { useToast } from "@/hooks/use-toast";
 
 interface AnalysisResult {
   summary: string;
@@ -29,10 +30,12 @@ const BillAnalyze = () => {
     canonicalPath: "/bill-analyze",
   });
 
+  const { toast } = useToast();
   const [dragActive, setDragActive] = useState(false);
   const [file, setFile] = useState<File | null>(null);
   const [analyzing, setAnalyzing] = useState(false);
   const [result, setResult] = useState<AnalysisResult | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   const handleDrag = useCallback((e: React.DragEvent) => {
     e.preventDefault();
@@ -67,6 +70,13 @@ const BillAnalyze = () => {
     if (validTypes.includes(file.type) || file.type.startsWith("image/")) {
       setFile(file);
       setResult(null);
+      setError(null);
+    } else {
+      toast({
+        variant: "destructive",
+        title: "Unsupported file",
+        description: "Please upload a PDF, Word document, or image (JPG, PNG, WEBP).",
+      });
     }
   };
 
@@ -92,6 +102,7 @@ const BillAnalyze = () => {
     if (!file) return;
 
     setAnalyzing(true);
+    setError(null);
 
     try {
       const base64Data = await fileToBase64(file);
@@ -105,15 +116,40 @@ const BillAnalyze = () => {
         }),
       });
 
+      // The API route may not exist at all (e.g. wrong host, static-only
+      // deployment) — in that case the response usually isn't JSON.
+      const contentType = response.headers.get("content-type") || "";
       if (!response.ok) {
-        throw new Error("Analysis request failed");
+        let details = "";
+        if (contentType.includes("application/json")) {
+          const errJson = await response.json().catch(() => null);
+          details = errJson?.error || errJson?.details || "";
+        }
+        throw new Error(
+          details || `Analysis request failed (status ${response.status})`
+        );
+      }
+
+      if (!contentType.includes("application/json")) {
+        throw new Error(
+          "The analysis service is unavailable right now. Please try again shortly."
+        );
       }
 
       const analysisResult: AnalysisResult = await response.json();
       setResult(analysisResult);
-    } catch (error) {
-      console.error("Bill analysis error:", error);
-      // TODO: surface a user-facing error toast here instead of failing silently
+    } catch (err) {
+      console.error("Bill analysis error:", err);
+      const message =
+        err instanceof Error
+          ? err.message
+          : "Something went wrong while analyzing your bill.";
+      setError(message);
+      toast({
+        variant: "destructive",
+        title: "Bill analysis failed",
+        description: message,
+      });
     } finally {
       setAnalyzing(false);
     }
@@ -122,6 +158,7 @@ const BillAnalyze = () => {
   const clearFile = () => {
     setFile(null);
     setResult(null);
+    setError(null);
   };
 
   return (
@@ -228,6 +265,17 @@ const BillAnalyze = () => {
                   </div>
                 </div>
 
+                {/* Error Banner */}
+                {error && !result && (
+                  <div className="mb-6 p-4 rounded-xl bg-destructive/5 border border-destructive/20 flex items-start gap-3">
+                    <AlertCircle className="w-5 h-5 text-destructive flex-shrink-0 mt-0.5" />
+                    <div>
+                      <h4 className="font-semibold text-foreground">Analysis failed</h4>
+                      <p className="text-sm text-muted-foreground">{error}</p>
+                    </div>
+                  </div>
+                )}
+
                 {/* Analyze Button */}
                 {!result && (
                   <div className="text-center">
@@ -242,6 +290,8 @@ const BillAnalyze = () => {
                           <Loader2 className="w-5 h-5 mr-2 animate-spin" />
                           Analyzing...
                         </>
+                      ) : error ? (
+                        <>Try Again</>
                       ) : (
                         <>
                           Analyze Bill

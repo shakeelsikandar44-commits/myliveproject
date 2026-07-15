@@ -25,17 +25,23 @@ export default async function handler(req: Request) {
       );
     }
 
-    const prompt = `You are a medical billing expert. Analyze this medical bill image/document and return ONLY a valid JSON object (no markdown, no backticks, no extra text) matching exactly this structure:
+    const prompt = `You are a medical billing expert. Carefully read the attached medical bill image/document and extract ONLY the information that is actually visible and legible in it.
+
+CRITICAL RULES:
+- Do NOT invent, guess, or fabricate any hospital names, patient names, amounts, codes, or line items that are not clearly visible in the image.
+- If the image is blank, too blurry, too low-resolution, or the text is not legible enough to extract real data, you MUST say so explicitly in the "summary" field (e.g. "The uploaded image is too unclear to read the bill details.") and return an empty "lineItems" array and "totalAmount": "Unknown".
+- Every amount, code, and description in your response must come directly from what you can actually read in the image — never estimate or make up plausible-sounding numbers.
+
+Return ONLY a valid JSON object (no markdown, no backticks, no extra text) matching exactly this structure:
 {
-  "summary": "string - 2-3 sentence summary of the bill",
-  "totalAmount": "string - e.g. $1234.56",
+  "summary": "string - 2-3 sentence summary of the bill, or a note that the image could not be read",
+  "totalAmount": "string - e.g. $1234.56, or 'Unknown' if not legible",
   "lineItems": [
     { "code": "string - CPT/ICD code or N/A", "description": "string", "amount": "string", "status": "verified" | "potential-error" | "review" }
   ],
   "recommendations": ["string", "string"],
-  "potentialSavings": "string - e.g. $100 - $200"
-}
-If the file is blank or unreadable, return a summary explaining that clearly and an empty lineItems array.`;
+  "potentialSavings": "string - e.g. $100 - $200, or 'N/A' if the bill could not be read"
+}`;
 
     console.log('[analyze] calling Gemini API...');
     const response = await fetch(
@@ -52,7 +58,7 @@ If the file is blank or unreadable, return a summary explaining that clearly and
               ],
             },
           ],
-          generationConfig: { responseMimeType: 'application/json' },
+          generationConfig: { responseMimeType: 'application/json', temperature: 0 },
         }),
       }
     );

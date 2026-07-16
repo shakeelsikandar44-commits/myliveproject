@@ -1,7 +1,7 @@
 import { useState, useCallback } from "react";
 import { motion } from "framer-motion";
 import { 
-  Upload, FileText, Image, File, X, Download, CheckCircle, 
+  Upload, FileText, Image, X, Download, CheckCircle, 
   AlertCircle, Loader2, FileImage, FileType
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -23,10 +23,12 @@ interface AnalysisResult {
   potentialSavings: string;
 }
 
+const MAX_FILE_SIZE_BYTES = 10 * 1024 * 1024; // 10MB
+
 const BillAnalyze = () => {
   useSEO({
     title: "Analyze Your Medical Bill Free | AI Bill Breakdown",
-    description: "Upload your medical bill (PDF, Word, or image) and get an instant AI-powered breakdown of every charge, plus potential errors and savings opportunities.",
+    description: "Upload your medical bill (PDF or image) and get an instant AI-powered breakdown of every charge, plus potential errors and savings opportunities.",
     canonicalPath: "/bill-analyze",
   });
 
@@ -47,6 +49,32 @@ const BillAnalyze = () => {
     }
   }, []);
 
+  const handleFile = useCallback((file: File) => {
+    const validTypes = ["application/pdf", "image/jpeg", "image/png", "image/webp"];
+
+    if (!validTypes.includes(file.type) && !file.type.startsWith("image/")) {
+      toast({
+        variant: "destructive",
+        title: "Unsupported file",
+        description: "Please upload a PDF or an image (JPG, PNG, WEBP). Word documents aren't supported yet — export to PDF first.",
+      });
+      return;
+    }
+
+    if (file.size > MAX_FILE_SIZE_BYTES) {
+      toast({
+        variant: "destructive",
+        title: "File too large",
+        description: "Please upload a file under 10MB (try a lower-resolution photo or a smaller PDF).",
+      });
+      return;
+    }
+
+    setFile(file);
+    setResult(null);
+    setError(null);
+  }, [toast]);
+
   const handleDrop = useCallback((e: React.DragEvent) => {
     e.preventDefault();
     e.stopPropagation();
@@ -55,28 +83,11 @@ const BillAnalyze = () => {
     if (e.dataTransfer.files && e.dataTransfer.files[0]) {
       handleFile(e.dataTransfer.files[0]);
     }
-  }, []);
+  }, [handleFile]);
 
   const handleFileInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
       handleFile(e.target.files[0]);
-    }
-  };
-
-  const handleFile = (file: File) => {
-    const validTypes = ["application/pdf", "image/jpeg", "image/png", "image/webp", 
-      "application/msword", "application/vnd.openxmlformats-officedocument.wordprocessingml.document"];
-    
-    if (validTypes.includes(file.type) || file.type.startsWith("image/")) {
-      setFile(file);
-      setResult(null);
-      setError(null);
-    } else {
-      toast({
-        variant: "destructive",
-        title: "Unsupported file",
-        description: "Please upload a PDF, Word document, or image (JPG, PNG, WEBP).",
-      });
     }
   };
 
@@ -178,7 +189,7 @@ const BillAnalyze = () => {
               Analyze Your Medical Bill
             </h1>
             <p className="text-lg text-muted-foreground">
-              Upload your medical bill in PDF, Word, or image format. Our AI will analyze every charge, decode medical codes, and identify potential errors or overcharges.
+              Upload your medical bill in PDF or image format. Our AI will analyze every charge, decode medical codes, and identify potential errors or overcharges.
             </p>
           </motion.div>
         </div>
@@ -204,7 +215,7 @@ const BillAnalyze = () => {
               >
                 <input
                   type="file"
-                  accept=".pdf,.doc,.docx,.jpg,.jpeg,.png,.webp"
+                  accept=".pdf,.jpg,.jpeg,.png,.webp"
                   onChange={handleFileInput}
                   className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
                 />
@@ -220,8 +231,7 @@ const BillAnalyze = () => {
                 <div className="flex flex-wrap justify-center gap-3">
                   {[
                     { icon: FileText, label: "PDF" },
-                    { icon: File, label: "Word" },
-                    { icon: Image, label: "Image" },
+                    { icon: Image, label: "Image (JPG, PNG, WEBP)" },
                   ].map((type, index) => (
                     <div
                       key={index}

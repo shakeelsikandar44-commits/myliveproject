@@ -1,10 +1,9 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
-import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
-export default defineConfig(({ mode }) => ({
+export default defineConfig(() => ({
   // The site is deployed on Vercel at the domain root, so asset paths must be
   // absolute ("/assets/..."). A relative base ("./assets/...") breaks every
   // nested route (e.g. /articles/3, /categories/basics) when loaded directly
@@ -16,7 +15,7 @@ export default defineConfig(({ mode }) => ({
     host: "::",
     port: 8080,
   },
-  plugins: [react(), mode === "development" && componentTagger()].filter(Boolean),
+  plugins: [react()],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),

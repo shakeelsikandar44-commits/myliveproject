@@ -2,7 +2,17 @@ import { useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import Layout from "@/components/Layout";
 
-const articles: Record<string, any> = {
+interface ArticleData {
+  id: number;
+  title: string;
+  date: string;
+  readTime: string;
+  author?: { name: string; bio?: string };
+  metaDescription: string;
+  html: string;
+}
+
+const articles: Record<string, ArticleData> = {
   "1": {
     id: 1,
     title: "Understanding Your Medical Bill: A Complete Beginner's Guide",
@@ -426,16 +436,16 @@ const articles: Record<string, any> = {
   },
 };
 
+// Single, real editorial author/publisher used for every article (no fake A/B/C test personas).
+const articleAuthor = {
+  "@type": "Organization",
+  name: "Medical Bill Help Editorial Team",
+  sameAs: "https://medicalbillhelps.com/about",
+};
+
 const Article = () => {
   const { id } = useParams();
   const article = id ? articles[id] : undefined;
-
-  // Single, real editorial author/publisher used for every article (no fake A/B/C test personas).
-  const articleAuthor = {
-    "@type": "Organization",
-    name: "Medical Bill Help Editorial Team",
-    sameAs: "https://medicalbillhelps.com/about",
-  };
 
   useEffect(() => {
     if (article) {

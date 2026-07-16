@@ -1,11 +1,12 @@
-import { useState, useRef } from "react";
+import { useState, useRef, ReactNode } from "react";
 
 type Props = {
   content: string;
   title?: string;
+  children: ReactNode;
 };
 
-const HoverPreview = ({ content, title }: Props) => {
+const HoverPreview = ({ content, title, children }: Props) => {
   const [visible, setVisible] = useState(false);
   const containerRef = useRef<HTMLDivElement | null>(null);
 
@@ -16,7 +17,7 @@ const HoverPreview = ({ content, title }: Props) => {
       onMouseLeave={() => setVisible(false)}
       ref={containerRef}
     >
-      {/** children will be the card anchor in parent; the preview panel is positioned absolute */}
+      {children}
       {visible && (
         <div
           role="region"

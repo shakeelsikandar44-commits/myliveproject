@@ -134,11 +134,7 @@ const BillAnalyze = () => {
         let details = "";
         if (contentType.includes("application/json")) {
           const errJson = await response.json().catch(() => null);
-          const mainMessage = errJson?.error || `Analysis request failed (status ${response.status})`;
-          // TEMP DEBUG: also show errJson.details (raw upstream error text) so
-          // we can diagnose without digging through Vercel logs. Safe to
-          // remove once the root cause is confirmed fixed.
-          details = errJson?.details ? `${mainMessage} — [debug: ${errJson.details}]` : mainMessage;
+          details = errJson?.error || "";
         }
         throw new Error(
           details || `Analysis request failed (status ${response.status})`

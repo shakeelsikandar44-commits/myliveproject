@@ -13,7 +13,11 @@
 //   must be enabled for the "Production" environment (not just Preview).
 //   Redeploy after adding/changing it.
 
-const GEMINI_MODEL = 'gemini-2.5-flash';
+// Uses gemini-3.5-flash (GA since May 2026) — has a free tier (no credit
+// card needed). Note: gemini-2.5-flash, which this used to point to, is now
+// cut off for new API users/keys (confirmed via a live 404 from Google:
+// "This model models/gemini-2.5-flash is no longer available to new users").
+const GEMINI_MODEL = 'gemini-3.5-flash';
 
 const ANALYSIS_SCHEMA = {
   type: 'object',

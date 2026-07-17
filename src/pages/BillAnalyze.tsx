@@ -27,9 +27,19 @@ const MAX_FILE_SIZE_BYTES = 10 * 1024 * 1024; // 10MB
 
 const BillAnalyze = () => {
   useSEO({
-    title: "Analyze Your Medical Bill Free | AI Bill Breakdown",
-    description: "Upload your medical bill (PDF or image) and get an instant AI-powered breakdown of every charge, plus potential errors and savings opportunities.",
+    title: "Free Medical Bill Checker — Upload & Find Billing Errors with AI",
+    description: "Upload your medical bill (PDF or photo) and let AI check every charge for errors, duplicates, and overcharges in seconds. Free, no signup, no account needed.",
     canonicalPath: "/bill-analyze",
+    jsonLd: {
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      name: "How to check your medical bill for errors with AI",
+      step: [
+        { "@type": "HowToStep", name: "Upload your bill", text: "Upload a photo or PDF of your itemized medical bill." },
+        { "@type": "HowToStep", name: "AI reads every line", text: "Our AI reads each charge, CPT/ICD-10 code, and amount on the bill." },
+        { "@type": "HowToStep", name: "Review flagged errors", text: "Get a plain-English breakdown with any duplicate charges, unbundled fees, or overcharges flagged for review." },
+      ],
+    },
   });
 
   const { toast } = useToast();

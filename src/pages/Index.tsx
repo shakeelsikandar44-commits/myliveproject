@@ -2,10 +2,11 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { 
-  FileText, Search, CheckCircle, ArrowRight, Shield, Clock, 
+  CheckCircle, ArrowRight, Shield, Clock, 
   Users, Star, ChevronLeft, ChevronRight, Upload, Code, BookOpen
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import Layout from "@/components/Layout";
 import heroImage from "@/assets/hero-medical.jpg";
 import billAnalysisImage from "@/assets/bill-analysis.jpg";
@@ -96,15 +97,63 @@ const testimonials = [
   },
 ];
 
+const homeFaqs = [
+  {
+    question: "Is Medical Bill Help really free?",
+    answer:
+      "Yes. Uploading a bill for AI analysis and decoding CPT/ICD-10 codes is completely free, with no account or credit card required.",
+  },
+  {
+    question: "How does the AI find billing errors?",
+    answer:
+      "Our AI reads every line item on your bill and checks it against common patterns — duplicate charges, unbundled services that should be billed together, and amounts that look unusually high — then flags anything worth a second look.",
+  },
+  {
+    question: "What is a CPT or ICD-10 code?",
+    answer:
+      "CPT codes describe the specific procedures and services a provider performed. ICD-10 codes describe the diagnosis or reason for care. Together they determine what you're billed for and why.",
+  },
+  {
+    question: "Is my medical bill data safe to upload?",
+    answer:
+      "Your file is sent securely for analysis and is not stored or shared. We don't require an account, so no personal profile is created from your upload.",
+  },
+  {
+    question: "How many medical bills actually contain errors?",
+    answer:
+      "Studies on medical billing accuracy have found that a large share of hospital bills contain at least one error, from duplicate charges to incorrect codes — which is exactly why checking your itemized bill line by line is worth the few minutes it takes.",
+  },
+];
+
 const Index = () => {
   useSEO({
-    title: "Medical Bill Help | AI Bill Analysis & Code Decoder",
-    description: "Upload your medical bill for a free AI-powered breakdown. Spot billing errors, decode CPT and ICD-10 codes instantly, and learn your rights as a patient.",
+    title: "Medical Bill Help — Free AI Bill Checker & CPT/ICD-10 Code Decoder",
+    description: "Check your medical bill for errors free with AI. Upload any bill or EOB, decode CPT and ICD-10 codes instantly, and find overcharges — no signup required.",
     canonicalPath: "/",
+    jsonLd: [
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        name: "Medical Bill Help",
+        url: "https://medicalbillhelps.com/",
+        applicationCategory: "HealthApplication",
+        operatingSystem: "Any (web-based)",
+        offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+        description: "Free AI-powered medical bill analysis and CPT/ICD-10 medical code decoder.",
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: homeFaqs.map((faq) => ({
+          "@type": "Question",
+          name: faq.question,
+          acceptedAnswer: { "@type": "Answer", text: faq.answer },
+        })),
+      },
+    ],
   });
 
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [currentTestimonial, setCurrentTestimonial] = useState(0);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -419,6 +468,28 @@ const Index = () => {
               </motion.div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-24 bg-muted/30">
+        <div className="container mx-auto px-4 max-w-3xl">
+          <div className="text-center mb-12">
+            <p className="text-sm font-semibold text-primary uppercase tracking-wide mb-2">FAQ</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground">Frequently Asked Questions</h2>
+          </div>
+          <Accordion type="single" collapsible className="w-full">
+            {homeFaqs.map((faq) => (
+              <AccordionItem key={faq.question} value={faq.question}>
+                <AccordionTrigger className="text-left text-lg font-semibold">
+                  {faq.question}
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground text-base">
+                  {faq.answer}
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
         </div>
       </section>
 

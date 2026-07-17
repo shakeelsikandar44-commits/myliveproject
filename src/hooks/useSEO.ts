@@ -4,39 +4,44 @@ interface SEOOptions {
   title: string;
   description: string;
   canonicalPath?: string; // e.g. "/about" — omit for homepage
+  ogType?: string; // defaults to "website"
+  jsonLd?: Record<string, unknown> | Record<string, unknown>[];
 }
 
+function setMeta(attr: "name" | "property", key: string, content: string) {
+  let el = document.querySelector(`meta[${attr}="${key}"]`);
+  if (!el) {
+    el = document.createElement("meta");
+    el.setAttribute(attr, key);
+    document.head.appendChild(el);
+  }
+  el.setAttribute("content", content);
+}
+
+const JSON_LD_ID = "page-json-ld";
+
 /**
- * Sets the document title, meta description, and canonical URL for a page.
- * Runs on mount and whenever the title/description change.
+ * Sets the document title, meta description, canonical URL, Open Graph /
+ * Twitter tags, and (optionally) page-specific JSON-LD structured data.
+ * Runs on mount and whenever the passed-in values change.
  */
-export function useSEO({ title, description, canonicalPath = "" }: SEOOptions) {
+export function useSEO({
+  title,
+  description,
+  canonicalPath = "",
+  ogType = "website",
+  jsonLd,
+}: SEOOptions) {
   useEffect(() => {
     document.title = title;
 
-    let meta = document.querySelector('meta[name="description"]');
-    if (!meta) {
-      meta = document.createElement("meta");
-      meta.setAttribute("name", "description");
-      document.head.appendChild(meta);
-    }
-    meta.setAttribute("content", description);
-
-    let ogTitle = document.querySelector('meta[property="og:title"]');
-    if (!ogTitle) {
-      ogTitle = document.createElement("meta");
-      ogTitle.setAttribute("property", "og:title");
-      document.head.appendChild(ogTitle);
-    }
-    ogTitle.setAttribute("content", title);
-
-    let ogDesc = document.querySelector('meta[property="og:description"]');
-    if (!ogDesc) {
-      ogDesc = document.createElement("meta");
-      ogDesc.setAttribute("property", "og:description");
-      document.head.appendChild(ogDesc);
-    }
-    ogDesc.setAttribute("content", description);
+    setMeta("name", "description", description);
+    setMeta("property", "og:title", title);
+    setMeta("property", "og:description", description);
+    setMeta("property", "og:type", ogType);
+    setMeta("property", "og:url", `https://medicalbillhelps.com${canonicalPath}`);
+    setMeta("name", "twitter:title", title);
+    setMeta("name", "twitter:description", description);
 
     let canonical = document.querySelector('link[rel="canonical"]');
     if (!canonical) {
@@ -45,5 +50,20 @@ export function useSEO({ title, description, canonicalPath = "" }: SEOOptions) {
       document.head.appendChild(canonical);
     }
     canonical.setAttribute("href", `https://medicalbillhelps.com${canonicalPath}`);
-  }, [title, description, canonicalPath]);
+
+    const existingScript = document.getElementById(JSON_LD_ID);
+    if (existingScript) existingScript.remove();
+
+    if (jsonLd) {
+      const script = document.createElement("script");
+      script.id = JSON_LD_ID;
+      script.type = "application/ld+json";
+      script.textContent = JSON.stringify(jsonLd);
+      document.head.appendChild(script);
+    }
+
+    return () => {
+      document.getElementById(JSON_LD_ID)?.remove();
+    };
+  }, [title, description, canonicalPath, ogType, jsonLd]);
 }

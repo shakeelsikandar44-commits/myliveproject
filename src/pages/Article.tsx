@@ -12,7 +12,7 @@ interface ArticleData {
   html: string;
 }
 
-const articles: Record<string, ArticleData> = {
+export const articles: Record<string, ArticleData> = {
   "1": {
     id: 1,
     title: "Understanding Your Medical Bill: A Complete Beginner's Guide",

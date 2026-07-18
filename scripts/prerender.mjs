@@ -64,14 +64,16 @@ async function main() {
     // Swap in the route-specific <title>
     page = page.replace(/<title>.*?<\/title>/s, `<title>${escapeHtml(route.title)}</title>`);
 
+    const canonicalUrl = `https://medicalbillhelps.com${route.path === "/" ? "/" : route.path}`;
+
     // Swap in the route-specific meta description (and matching OG/Twitter tags)
     page = replaceMetaContent(page, "name", "description", route.description);
     page = replaceMetaContent(page, "property", "og:title", route.title);
     page = replaceMetaContent(page, "property", "og:description", route.description);
+    page = replaceMetaContent(page, "property", "og:url", canonicalUrl);
     page = replaceMetaContent(page, "name", "twitter:title", route.title);
     page = replaceMetaContent(page, "name", "twitter:description", route.description);
 
-    const canonicalUrl = `https://medicalbillhelps.com${route.path === "/" ? "/" : route.path}`;
     if (page.includes('rel="canonical"')) {
       page = page.replace(/<link rel="canonical"[^>]*>/, `<link rel="canonical" href="${canonicalUrl}" />`);
     } else {
